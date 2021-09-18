@@ -1,7 +1,7 @@
 <template>
-  <button :class="[variantClass, shadowClass, colorClass, sizeClass, activeClass]">
+  <button :class="[variantClass, shadowClass, colorClass, sizeClass, activeClass, disabledClass]">
     <span v-if="startIcon" class="startIcon material-icons">{{startIcon}}</span>
-    <slot/>
+    <slot>Default</slot>
     <span v-if="endIcon" class="endIcon material-icons">{{endIcon}}</span>
   </button>
 </template>
@@ -17,6 +17,7 @@ export default {
     variant: String,
     disableShadow: Boolean,
     active: Boolean,
+    disabled: Boolean,
     color: String,
     size: String,
     startIcon: String,
@@ -36,10 +37,16 @@ export default {
       if (this.active) return 'active'
       return ''
     },
+    disabledClass() {
+      if (this.disabled) return 'disabled'
+      return ''
+    },
     colorClass() {
+      if (this.disabled) return ''
       if (this.color == 'danger') return 'danger'
       if (this.color == 'primary') return 'primary'
       if (this.color == 'secondary') return 'secondary'
+      if (this.color == 'default') return 'default'
       return 'default'
     },
     sizeClass() {
@@ -74,6 +81,12 @@ export default {
   --background: #D32F2F;
   --hover-background: #9A0007;
 }
+.button.disabled {
+  --color: #9E9E9E;
+  --background: #E0E0E0;
+  --hover-background: #E0E0E0;
+  cursor: default;
+}
 
   /*variables outline and text colors*/
 .outline.default, .text.default, .outline.primary, .text.primary{
@@ -88,12 +101,17 @@ export default {
   --color: #455A64;
   --color-hover: #edf6fc;
 }
+.outline.disabled, .text.disabled {
+  --color: #9E9E9E;
+  --color-hover: #FFFFFF;
+  cursor: default;
+}
 
 /*boton*/
 button {
-  margin: 5px 5px;
   cursor: pointer;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   border-radius: 7px;
   border: none;
   transition: background .2s;
@@ -122,8 +140,8 @@ button {
 /*Outline button*/
 .outline {
   color: var(--color);
+  background: #FFFFFF;
   border: 1px solid var(--color);
-  background: #f5f5f5;
 }
 .outline:hover, .outline:focus, .outline.active {
   background: var(--color-hover);
@@ -132,7 +150,7 @@ button {
 /*text button*/
 .text {
   color: var(--color);
-  background: #f5f5f5;
+  background: #FFFFFF;
 }
 .text:hover, .text:focus, .text.active {
   background: var(--color-hover);
@@ -140,7 +158,7 @@ button {
 
 /*button shadow*/
 .shadow {
-  box-shadow: 2px 2px 5px #c9c9c9;
+  box-shadow: 1px 1px 3px #d8d8d8;
 }
 
 /*icon*/
