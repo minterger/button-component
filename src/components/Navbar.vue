@@ -35,7 +35,7 @@ export default {
 
 .nav {
   list-style: none;
-  margin: 60px 10px;
+  margin: 80px 0;
   padding: 20px 10px;
 }
 
@@ -43,7 +43,7 @@ export default {
   font-weight: 600;
   display: block;
   margin: 10px 0;
-  padding: 10px 40px;
+  padding: 10px 50px;
   color: #9E9E9E;
   text-decoration: none;
 }
