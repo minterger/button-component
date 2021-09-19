@@ -135,6 +135,8 @@
         <span class="hover">&:hover, &:focus</span>
         <Button color="danger" active/>
       </div>
+
+      <Footer></Footer>
     </div>
   </div>
 </template>
@@ -142,12 +144,14 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import Button from "@/components/Button.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
   components: {
     Navbar,
     Button,
+    Footer
   },
 };
 </script>
@@ -183,20 +187,22 @@ export default {
   min-width: 220px;
   padding-right: 40px;
   display: inline-block;
-  margin-top: 35px;
+  margin-top: 40px;
 }
 
 .card .etiqueta {
+  font-weight: 600;
   color: #333333;
   margin-bottom: 10px;
   display: block;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .card .hover {
+  font-weight: 600;
   color: #828282;
   margin-bottom: 10px;
   display: block;
-  font-size: 14px;
+  font-size: 13px;
 }
 </style>
